@@ -150,7 +150,7 @@ export const translations = {
         servicePlaceholder: "Select a service",
         services: [
           "Custom Software Development",
-          "SaaS Platform Development",
+          "SaaS Platform",
           "Cloud Architecture & DevOps",
           "API Development & Integration",
           "Mobile App Development",
@@ -312,7 +312,7 @@ export const translations = {
         servicePlaceholder: "Selecciona un servicio",
         services: [
           "Desarrollo de Software a Medida",
-          "Desarrollo de Plataformas SaaS",
+          "Plataformas SaaS",
           "Arquitectura Cloud y DevOps",
           "Desarrollo e Integración de API",
           "Desarrollo de Aplicaciones Móviles",
