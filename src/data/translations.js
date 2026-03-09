@@ -23,16 +23,16 @@ export const translations = {
       primaryCta: "Explore Our Services",
       secondaryCta: "View Our Work",
       stats: [
-        { value: "150+", label: "Projects Delivered" },
+        { value: "13+", label: "Projects Delivered" },
         { value: "98%", label: "Client Satisfaction" },
-        { value: "50+", label: "Enterprise Clients" },
+        { value: "7+", label: "Enterprise Clients" },
         { value: "24/7", label: "Support Available" }
       ]
     },
     services: {
       title: "Our",
       titleHighlight: "Services",
-      description: "Comprehensive software development services to transform your business and accelerate digital innovation.",
+      description: "We offer SaaS solutions and software services to accelerate your business transformation. Explore our ready-to-use platforms and expert development capabilities.",
       items: [
         {
           title: 'Custom Software Development',
@@ -40,8 +40,8 @@ export const translations = {
           iconName: 'Code2',
         },
         {
-          title: 'SaaS Platform Development',
-          description: 'Scalable, cloud-based platforms designed for growth, featuring multi-tenancy, subscription management, and seamless integrations.',
+          title: 'SaaS Services',
+          description: 'Access our scalable, cloud-based SaaS platforms for business growth, with subscription management and seamless integrations.',
           iconName: 'Cloud',
         },
         {
@@ -106,7 +106,7 @@ export const translations = {
       primaryCta: "Get in Touch",
       secondaryCta: "View Our Process",
       stats: [
-        { title: 'Free', subtitle: 'Consultation' },
+        { title: 'Free', subtitle: 'Quote Request' },
         { title: '48h', subtitle: 'Response Time' },
         { title: 'Agile', subtitle: 'Methodology' },
         { title: 'Dedicated', subtitle: 'Support Team' },
@@ -185,25 +185,25 @@ export const translations = {
       primaryCta: "Explora Nuestros Servicios",
       secondaryCta: "Ver Nuestro Trabajo",
       stats: [
-        { value: "150+", label: "Proyectos Entregados" },
+        { value: "13+", label: "Proyectos Entregados" },
         { value: "98%", label: "Satisfacción del Cliente" },
-        { value: "50+", label: "Clientes Empresariales" },
+        { value: "7+", label: "Clientes Empresariales" },
         { value: "24/7", label: "Soporte Disponible" }
       ]
     },
     services: {
       title: "Nuestros",
       titleHighlight: "Servicios",
-      description: "Servicios integrales de desarrollo de software para transformar su negocio y acelerar la innovación digital.",
+        description: "Ofrecemos servicios SaaS listos para usar, además de soluciones de software a medida, para impulsar la eficiencia operativa y el crecimiento.",
       items: [
         {
           title: 'Desarrollo de Software a Medida',
-          description: 'Soluciones de software adaptadas construidas desde cero para cumplir con sus requisitos comerciales únicos e impulsar la eficiencia operativa.',
+            description: 'Soluciones de software adaptadas construidas desde cero para cumplir con sus requisitos comerciales únicos e impulsar la eficiencia operativa.',
           iconName: 'Code2',
         },
         {
-          title: 'Desarrollo de Plataformas SaaS',
-          description: 'Plataformas escalables basadas en la nube diseñadas para el crecimiento, con multi-tenencia, gestión de suscripciones e integraciones perfectas.',
+          title: 'Oferta de SaaS',
+            description: 'Ofrecemos plataformas SaaS propias, listas para usar, con multi-tenencia, gestión de suscripciones e integraciones perfectas.',
           iconName: 'Cloud',
         },
         {
@@ -268,7 +268,7 @@ export const translations = {
       primaryCta: "Contáctanos",
       secondaryCta: "Ver Nuestro Proceso",
       stats: [
-        { title: 'Gratis', subtitle: 'Consultoría' },
+          { title: 'Gratis', subtitle: 'Cotización' },
         { title: '48h', subtitle: 'Tiempo de Respuesta' },
         { title: 'Ágil', subtitle: 'Metodología' },
         { title: 'Dedicado', subtitle: 'Equipo de Soporte' },
