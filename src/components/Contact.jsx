@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle, Loader2 } from 'lucide-react';
 
 const Contact = ({ content }) => {
   const { title, titleHighlight, subtitle, form, contactInfo } = content;
+  const recaptchaRef = useRef(null);
+  const [ReCAPTCHA, setReCAPTCHA] = useState(null);
+  
+  useEffect(() => {
+    import('react-google-recaptcha').then(module => {
+      setReCAPTCHA(() => module.default || module);
+    });
+  }, []);
   
   const [formData, setFormData] = useState({
     name: '',
@@ -26,6 +34,13 @@ const Contact = ({ content }) => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    const recaptchaToken = recaptchaRef.current.getValue();
+    if (!recaptchaToken) {
+      alert("Please complete the reCAPTCHA");
+      setIsSubmitting(false);
+      return;
+    }
+    
     try {
       // Use FormSubmit.co for AJAX submission
       const response = await fetch(`https://formsubmit.co/ajax/${contactInfo.email}`, {
@@ -36,6 +51,7 @@ const Contact = ({ content }) => {
         },
         body: JSON.stringify({
           ...formData,
+          'g-recaptcha-response': recaptchaToken,
           _subject: `Quote Request from ${formData.name}`,
         })
       });
@@ -48,8 +64,14 @@ const Contact = ({ content }) => {
           service: '',
           message: ''
         });
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
       } else {
         alert('Something went wrong. Please try again.');
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
       }
     } catch (error) {
       console.error("Submission error:", error);
@@ -197,6 +219,16 @@ const Contact = ({ content }) => {
                       className="w-full bg-white dark:bg-black/50 border border-gray-200 dark:border-white/10 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:border-neon focus:ring-1 focus:ring-neon outline-none transition-colors resize-none disabled:opacity-50"
                       placeholder={form.messagePlaceholder}
                     ></textarea>
+                  </div>
+
+                  <div className="flex justify-center overflow-hidden rounded-lg min-h-[78px]">
+                    {ReCAPTCHA && (
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
+                        theme="dark"
+                      />
+                    )}
                   </div>
 
                   <button 
