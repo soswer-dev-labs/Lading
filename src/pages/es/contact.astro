@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar';
+import Contact from '../../components/Contact';
+import Footer from '../../components/Footer';
+import { translations } from '../../data/translations';
+
+const content = translations.es;
+---
+
+<Layout title={`Contacto - ${content.meta.title}`}>
+  <Navbar client:load content={content.nav} lang="es" />
+  <main>
+    <Contact client:load content={content.contactPage} />
+  </main>
+  <Footer client:visible content={content.footer} />
+</Layout>

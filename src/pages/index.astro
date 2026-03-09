@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
+import Services from '../components/Services';
+import CaseStudies from '../components/CaseStudies';
+import CTA from '../components/CTA';
+import Footer from '../components/Footer';
+import { translations } from '../data/translations';
+
+const content = translations.en;
+---
+
+<Layout title={content.meta.title}>
+  <Navbar client:load content={content.nav} lang="en" />
+  <main>
+    <Hero client:load content={content.hero} />
+    <Services client:visible content={content.services} />
+    <CaseStudies client:visible content={content.caseStudies} />
+    <CTA client:visible content={content.cta} />
+  </main>
+  <Footer client:visible content={content.footer} />
+</Layout>

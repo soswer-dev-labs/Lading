@@ -1,0 +1,43 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Transforming Ideas Into Powerful Software" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/logo.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script is:inline>
+      const getTheme = () => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'dark';
+      };
+
+      const theme = getTheme();
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+	</head>
+	<body class="bg-white dark:bg-black text-black dark:text-white min-h-screen transition-colors duration-300">
+		<slot />
+	</body>
+</html>
