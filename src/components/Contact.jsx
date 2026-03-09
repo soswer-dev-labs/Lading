@@ -5,6 +5,7 @@ const Contact = ({ content }) => {
   const { title, titleHighlight, subtitle, form, contactInfo } = content;
   const recaptchaRef = useRef(null);
   const [ReCAPTCHA, setReCAPTCHA] = useState(null);
+  const [recaptchaTheme, setRecaptchaTheme] = useState('dark');
   
   useEffect(() => {
     import('react-google-recaptcha').then(module => {
@@ -12,6 +13,22 @@ const Contact = ({ content }) => {
     });
   }, []);
   
+  useEffect(() => {
+    // Listen for theme changes
+    const updateTheme = () => {
+      const theme = window.__soswerTheme || 'dark';
+      setRecaptchaTheme(theme === 'light' ? 'light' : 'dark');
+    };
+    updateTheme();
+    // Listen for themechange and also for storage changes
+    window.addEventListener('themechange', updateTheme);
+    window.addEventListener('storage', updateTheme);
+    return () => {
+      window.removeEventListener('themechange', updateTheme);
+      window.removeEventListener('storage', updateTheme);
+    };
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -226,7 +243,7 @@ const Contact = ({ content }) => {
                       <ReCAPTCHA
                         ref={recaptchaRef}
                         sitekey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
-                        theme="dark"
+                        theme={recaptchaTheme}
                       />
                     )}
                   </div>

@@ -9,6 +9,8 @@ const ThemeToggle = () => {
     setMounted(true);
     const savedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(savedTheme);
+    // Add theme to window for global access
+    window.__soswerTheme = savedTheme;
   }, []);
 
   useEffect(() => {
@@ -20,10 +22,14 @@ const ThemeToggle = () => {
       root.classList.add('dark');
     }
     localStorage.setItem('theme', theme);
+    window.__soswerTheme = theme;
   }, [theme, mounted]);
 
   const toggleTheme = () => {
     setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+    setTimeout(() => {
+      window.dispatchEvent(new Event('themechange'));
+    }, 10);
   };
 
   if (!mounted) return <div className="p-2 w-9 h-9" />;
