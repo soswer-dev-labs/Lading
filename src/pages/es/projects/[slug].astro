@@ -154,7 +154,8 @@ const alanubeLogo = facturacionImages.find((img) => img.path.includes('alanube-l
           <img
             src={keepDmLogo.src}
             alt="Logo de KeepDM"
-            class="object-cover rounded-3xl"
+            class="object-cover rounded-3xl cursor-zoom-in"
+            data-modal-image
             style="width: 128px; height: 128px;"
             loading="lazy"
           />
@@ -166,7 +167,8 @@ const alanubeLogo = facturacionImages.find((img) => img.path.includes('alanube-l
           <img
             src={wLunaLogo.src}
             alt="Logo de W-luna"
-            class="h-auto"
+            class="h-auto cursor-zoom-in"
+            data-modal-image
             style="width: 220px;"
             loading="lazy"
           />
@@ -196,9 +198,9 @@ const alanubeLogo = facturacionImages.find((img) => img.path.includes('alanube-l
             Desarrollamos el Modulo de Facturacion Electronica junto a nuestro aliado estrategico Alanube, combinando conocimiento de negocio y ejecucion tecnica para una integracion DIAN confiable.
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8">
-            <img src="/logo.webp" alt="Logo de SOSWER" class="w-auto" style="height: 56px;" loading="lazy" />
+            <img src="/logo.webp" alt="Logo de SOSWER" class="w-auto cursor-zoom-in" data-modal-image style="height: 56px;" loading="lazy" />
             <span class="text-2xl font-extrabold text-neon"> x </span>
-            <img src={alanubeLogo.src} alt="Logo de Alanube" class="w-auto" style="height: 56px;" loading="lazy" />
+            <img src={alanubeLogo.src} alt="Logo de Alanube" class="w-auto cursor-zoom-in" data-modal-image style="height: 56px;" loading="lazy" />
           </div>
         </section>
       )}
@@ -225,7 +227,8 @@ const alanubeLogo = facturacionImages.find((img) => img.path.includes('alanube-l
                     <img
                       src={image.src}
                       alt={`Captura de My Space Online ${idx + 1}`}
-                      class="w-full h-56 sm:h-64 object-cover rounded-xl"
+                      class="w-full h-56 sm:h-64 object-cover rounded-xl cursor-zoom-in"
+                      data-modal-image
                       loading="lazy"
                     />
                     <div class="rounded-xl p-4">
@@ -248,7 +251,8 @@ const alanubeLogo = facturacionImages.find((img) => img.path.includes('alanube-l
                     <img
                       src={image.src}
                       alt={`Captura de My Space Online ${idx + 1}`}
-                      class="w-full h-56 sm:h-64 object-cover rounded-xl md:order-2 order-1"
+                      class="w-full h-56 sm:h-64 object-cover rounded-xl md:order-2 order-1 cursor-zoom-in"
+                      data-modal-image
                       loading="lazy"
                     />
                   </>
@@ -268,7 +272,8 @@ const alanubeLogo = facturacionImages.find((img) => img.path.includes('alanube-l
                 <img
                   src={image.src}
                   alt={`Pantalla W-luna ${idx + 1}`}
-                  class="w-full h-64 sm:h-72 object-cover rounded-xl"
+                  class="w-full h-64 sm:h-72 object-cover rounded-xl cursor-zoom-in"
+                  data-modal-image
                   loading="lazy"
                 />
                 <div class="rounded-xl p-4">
@@ -301,13 +306,64 @@ const alanubeLogo = facturacionImages.find((img) => img.path.includes('alanube-l
           <img
             src={keepDmDashboard.src}
             alt="Dashboard de KeepDM"
-            class="w-full h-auto rounded-2xl"
+            class="w-full h-auto rounded-2xl cursor-zoom-in"
+            data-modal-image
             loading="lazy"
           />
         </section>
       )}
+
+      <div id="project-image-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4">
+        <button id="project-image-modal-close" type="button" class="absolute top-4 right-4 text-white text-sm px-3 py-1 rounded border border-white/30 hover:bg-white/10">Cerrar</button>
+        <img id="project-image-modal-img" src="" alt="Imagen ampliada del proyecto" class="max-w-[95vw] max-h-[90vh] w-auto h-auto rounded-xl" />
+      </div>
     </section>
   </main>
+
+  <script is:inline>
+    (() => {
+      const modal = document.getElementById('project-image-modal');
+      const modalImg = document.getElementById('project-image-modal-img');
+      const closeBtn = document.getElementById('project-image-modal-close');
+      if (!modal || !modalImg || !closeBtn) return;
+
+      const openModal = (src, alt) => {
+        modalImg.src = src;
+        modalImg.alt = alt || 'Imagen ampliada del proyecto';
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeModal = () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        modalImg.src = '';
+        document.body.style.overflow = '';
+      };
+
+      document.addEventListener('click', (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+
+        const image = target.closest('img[data-modal-image]');
+        if (image) {
+          openModal(image.getAttribute('src') || '', image.getAttribute('alt') || 'Imagen ampliada del proyecto');
+          return;
+        }
+
+        if (target === modal || target === closeBtn) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
 
   <Footer client:visible content={content.footer} />
 </Layout>
