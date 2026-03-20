@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import Process from '../../components/Process';
+import About from '../../components/About';
+import { translations } from '../../data/translations';
+
+const content = translations.es;
+---
+
+<Layout title={`Nuestro Proceso y Equipo - ${content.meta.title}`}>
+  <Navbar client:load content={content.nav} lang="es" />
+  
+  <main class="pt-20 bg-white dark:bg-black transition-colors duration-300 min-h-screen">
+    <section class="container mx-auto px-6 py-12">
+      <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-7xl font-bold text-black dark:text-white mb-6">
+          Nuestro <span class="text-neon">Proceso</span> y Equipo
+        </h1>
+        <p class="text-gray-600 dark:text-gray-400 text-xl max-w-3xl mx-auto">
+          Conozca a los expertos detrás de SOSWER y cómo transformamos su visión en realidad.
+        </p>
+      </div>
+
+      <div class="space-y-24">
+        <About client:visible content={content.about} />
+        <Process client:visible content={content.process} />
+      </div>
+
+      <div class="mt-20 flex flex-col sm:flex-row items-center justify-center gap-6 text-center">
+        <a href="/es/projects" class="inline-flex items-center px-8 py-4 rounded-xl border border-neon/30 bg-neon/5 text-neon font-bold hover:bg-neon/10 transition-all transform hover:scale-105">
+          {content.caseStudies.viewAllProjects}
+        </a>
+        <a href="/es/contact" class="inline-flex items-center px-8 py-4 rounded-xl bg-neon text-black font-bold hover:bg-neon-hover transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(57,255,20,0.4)]">
+          Inicia tu Proyecto Ahora
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer client:visible content={content.footer} />
+</Layout>

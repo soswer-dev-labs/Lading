@@ -1,8 +1,9 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
-const CTA = ({ content }) => {
+const CTA = ({ content, lang = 'en' }) => {
   const { badge, title, titleHighlight, description, primaryCta, secondaryCta, stats } = content;
+  const processHref = lang === 'es' ? '/es/process' : '/process';
 
   return (
     <section className="py-20 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300">
@@ -26,10 +27,10 @@ const CTA = ({ content }) => {
           <a href="/contact" className="px-8 py-4 bg-neon hover:bg-neon-hover text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(57,255,20,0.4)]">
             {primaryCta}
           </a>
-          <button className="px-8 py-4 bg-gray-100 dark:bg-transparent border border-gray-200 dark:border-white/20 hover:bg-gray-200 dark:hover:bg-white/5 text-gray-900 dark:text-white font-semibold rounded-lg transition-all duration-300 flex items-center gap-2">
+          <a href={processHref} className="px-8 py-4 bg-gray-100 dark:bg-transparent border border-gray-200 dark:border-white/20 hover:bg-gray-200 dark:hover:bg-white/5 text-gray-900 dark:text-white font-semibold rounded-lg transition-all duration-300 flex items-center gap-2">
             {secondaryCta}
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </a>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-center">

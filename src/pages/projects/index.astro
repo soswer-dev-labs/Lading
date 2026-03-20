@@ -44,9 +44,12 @@ const projects = content.projectsPage;
         ))}
       </div>
 
-      <div class="mt-12 text-center">
-        <a href="/" class="inline-flex items-center px-6 py-3 rounded-xl bg-neon text-black font-semibold hover:bg-neon-hover transition-colors">
+      <div class="mt-16 flex flex-col sm:flex-row items-center justify-center gap-6 text-center">
+        <a href="/" class="inline-flex items-center px-8 py-4 rounded-xl border border-neon/30 bg-neon/5 text-neon font-bold hover:bg-neon/10 transition-all transform hover:scale-105">
           {projects.backToHome}
+        </a>
+        <a href="/contact" class="inline-flex items-center px-8 py-4 rounded-xl bg-neon text-black font-bold hover:bg-neon-hover transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(57,255,20,0.4)]">
+          {content.hero.primaryCta}
         </a>
       </div>
     </section>

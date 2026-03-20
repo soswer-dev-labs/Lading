@@ -17,11 +17,11 @@ export const translations = {
     },
     hero: {
       badge: "Next-Gen Software Solutions",
-      titlePrefix: "Transforming Ideas Into",
-      titleHighlight: "Powerful Software",
-      description: "We build cutting-edge custom software and scalable SaaS platforms that drive innovation and accelerate business growth.",
-      primaryCta: "Explore Our Services",
-      secondaryCta: "View Our Work",
+      titlePrefix: "Elevating Businesses Through",
+      titleHighlight: "Expert Software",
+      description: "We build custom digital solutions that drive growth, streamline operations, and enhance user experiences. From SaaS platforms to custom internal tools.",
+      primaryCta: "Get in Touch",
+      secondaryCta: "View our Work",
       stats: [
         { value: "13+", label: "Projects Delivered" },
         { value: "98%", label: "Client Satisfaction" },
@@ -207,6 +207,78 @@ export const translations = {
         { title: 'Dedicated', subtitle: 'Support Team' },
       ]
     },
+    process: {
+      title: "Our Development",
+      titleHighlight: "Journey",
+      subtitle: "We follow a rigorous Software Development Life Cycle (SDLC) to ensure excellence in every line of code.",
+      steps: [
+        {
+          id: "planning",
+          title: "Planning",
+          description: "Defining project scope, objectives, and resource allocation to set a solid foundation.",
+          icon: "ClipboardList"
+        },
+        {
+          id: "analysis",
+          title: "Analysis",
+          description: "Gathering detailed requirements and studying business needs to define the best technical path.",
+          icon: "Search"
+        },
+        {
+          id: "design",
+          title: "Design",
+          description: "Creating architectural blueprints, UI/UX mockups, and database schemas for a seamless user experience.",
+          icon: "Layout"
+        },
+        {
+          id: "development",
+          title: "Development",
+          description: "Our engineers bring the design to life using clean code and industry-standard practices.",
+          icon: "Code2"
+        },
+        {
+          id: "test",
+          title: "Testing",
+          description: "Rigorous quality assurance to identify and fix bugs, ensuring a stable and secure product.",
+          icon: "CheckCircle"
+        },
+        {
+          id: "deploy",
+          title: "Deployment",
+          description: "Launching your product to production environments with automated CI/CD pipelines.",
+          icon: "Rocket"
+        },
+        {
+          id: "support",
+          title: "Support",
+          description: "Continuous monitoring, updates, and maintenance to keep your software running perfectly.",
+          icon: "LifeBuoy"
+        }
+      ]
+    },
+    about: {
+      title: "Meet the",
+      titleHighlight: "Team",
+      subtitle: "The passionate minds behind SOSWER, dedicated to transforming business through technology.",
+      profiles: [
+        {
+          name: "Eder",
+          role: "UI/UX Designer & Project Lead",
+          bio: "I have been involved in design and project leadership since 2018, building a solid foundation in the planning, execution, and delivery of digital products. Since 2023, I have specialized in UX, creating user-centered UI/UX solutions for a variety of projects, with a strong emphasis on usability and visual coherence. In addition to my design expertise, I have a growing interest in DevOps practices, allowing me to bridge the gap between design, development, and deployment. This multidisciplinary approach enables me to contribute to products from both a strategic and technical perspective.",
+          image: "Eder.webp"
+        },
+        {
+          name: "Luis",
+          role: "Full Stack Developer & Backend Specialist",
+          bio: "I have been working with Python since 2020, drawn to its clarity and efficiency. My primary focus has been backend development, particularly database design and the underlying systems that power modern applications. Recently, I have been expanding my expertise into frontend technologies with the goal of becoming a well-rounded full stack developer. Professionally, I have led and contributed to multiple freelance projects, gaining hands-on experience in delivering scalable solutions. I am currently developing a SaaS platform using Django, Django REST Framework, and React.js. In 2024, I presented my undergraduate thesis proposal—a Flask-based data visualization dashboard—at the University Research Week (SIU 2024) hosted by the University of Ibagué.",
+          image: "Luis.webp"
+        }
+      ],
+      jointInitiative: {
+        title: "Joint Initiative",
+        content: "Together, we founded SOSWER, an initiative focused on enabling small and medium-sized businesses to effectively adopt technology and enhance their productivity and market reach. Through SOSWER, we deliver tailored software solutions as well as proprietary SaaS platforms, designed to meet real business needs with scalable and user-centered approaches."
+      }
+    },
     footer: {
       description: "Building robust, secure, and scalable software solutions that drive business innovation and digital excellence.",
       quickLinksTitle: "Quick Links",
@@ -274,10 +346,10 @@ export const translations = {
     },
     hero: {
       badge: "Soluciones de Software de Próxima Generación",
-      titlePrefix: "Transformando Ideas en",
-      titleHighlight: "Software Potente",
-      description: "Creamos software personalizado de vanguardia y plataformas SaaS escalables que impulsan la innovación y aceleran el crecimiento empresarial.",
-      primaryCta: "Explora Nuestros Servicios",
+      titlePrefix: "Elevando Empresas a Través de",
+      titleHighlight: "Software Experto",
+      description: "Construimos soluciones digitales personalizadas que impulsan el crecimiento, optimizan operaciones y mejoran las experiencias de usuario. Desde plataformas SaaS hasta herramientas internas personalizadas.",
+      primaryCta: "Ponte en Contacto",
       secondaryCta: "Ver Nuestro Trabajo",
       stats: [
         { value: "13+", label: "Proyectos Entregados" },
@@ -463,6 +535,78 @@ export const translations = {
         { title: 'Ágil', subtitle: 'Metodología' },
         { title: 'Dedicado', subtitle: 'Equipo de Soporte' },
       ]
+    },
+    process: {
+      title: "Nuestro Proceso de",
+      titleHighlight: "Desarrollo",
+      subtitle: "Seguimos un ciclo de vida de desarrollo de software (SDLC) riguroso para garantizar la excelencia en cada línea de código.",
+      steps: [
+        {
+          id: "planning",
+          title: "Planificación",
+          description: "Definición del alcance del proyecto, objetivos y asignación de recursos para establecer una base sólida.",
+          icon: "ClipboardList"
+        },
+        {
+          id: "analysis",
+          title: "Análisis",
+          description: "Recopilación de requisitos detallados y estudio de las necesidades comerciales para definir el mejor camino técnico.",
+          icon: "Search"
+        },
+        {
+          id: "design",
+          title: "Diseño",
+          description: "Creación de planos arquitectónicos, maquetas UI/UX y esquemas de bases de datos para una experiencia de usuario perfecta.",
+          icon: "Layout"
+        },
+        {
+          id: "development",
+          title: "Desarrollo",
+          description: "Nuestros ingenieros dan vida al diseño utilizando código limpio y prácticas estándar de la industria.",
+          icon: "Code2"
+        },
+        {
+          id: "test",
+          title: "Pruebas",
+          description: "Garantía de calidad rigurosa para identificar y corregir errores, asegurando un producto estable y seguro.",
+          icon: "CheckCircle"
+        },
+        {
+          id: "deploy",
+          title: "Despliegue",
+          description: "Lanzamiento de su producto a entornos de producción con pipelines CI/CD automatizados.",
+          icon: "Rocket"
+        },
+        {
+          id: "support",
+          title: "Soporte",
+          description: "Monitoreo continuo, actualizaciones y mantenimiento para que su software funcione perfectamente.",
+          icon: "LifeBuoy"
+        }
+      ]
+    },
+    about: {
+      title: "Conoce al",
+      titleHighlight: "Equipo",
+      subtitle: "Las mentes apasionadas detrás de SOSWER, dedicadas a transformar empresas a través de la tecnología.",
+      profiles: [
+        {
+          name: "Eder",
+          role: "Diseñador UI/UX y Líder de Proyecto",
+          bio: "He estado involucrado en el diseño y el liderazgo de proyectos desde 2018, construyendo una base sólida en la planificación, ejecución y entrega de productos digitales. Desde 2023, me he especializado en UX, creando soluciones UI/UX centradas en el usuario para una variedad de proyectos, con un fuerte énfasis en la usabilidad y la coherencia visual. Además de mi experiencia en diseño, tengo un creciente interés en las prácticas de DevOps, lo que me permite cerrar la brecha entre el diseño, el desarrollo y el despliegue. Este enfoque multidisciplinario me permite contribuir a los productos desde una perspectiva tanto estratégica como técnica.",
+          image: "Eder.webp"
+        },
+        {
+          name: "Luis",
+          role: "Desarrollador Full Stack y Especialista en Backend",
+          bio: "He estado trabajando con Python desde 2020, atraído por su claridad y eficiencia. Mi enfoque principal ha sido el desarrollo backend, particularmente el diseño de bases de datos y los sistemas subyacentes que alimentan las aplicaciones modernas. Recientemente, he estado expandiendo mi experiencia en tecnologías frontend con el objetivo de convertirme en un desarrollador full stack completo. Profesionalmente, he liderado y contribuido a múltiples proyectos freelance, ganando experiencia práctica en la entrega de soluciones escalables. Actualmente estoy desarrollando una plataforma SaaS utilizando Django, Django REST Framework y React.js. En 2024, presenté mi propuesta de tesis de pregrado, un tablero de visualización de datos basado en Flask, en la Semana de Investigación Universitaria (SIU 2024) organizada por la Universidad de Ibagué.",
+          image: "Luis.webp"
+        }
+      ],
+      jointInitiative: {
+        title: "Iniciativa Conjunta",
+        content: "Juntos, fundamos SOSWER, una iniciativa enfocada en permitir que las pequeñas y medianas empresas adopten tecnología de manera efectiva y mejoren su productividad y alcance en el mercado. A través de SOSWER, entregamos soluciones de software a medida, así como plataformas SaaS patentadas, diseñadas para satisfacer las necesidades comerciales reales con enfoques escalables y centrados en el usuario."
+      }
     },
     footer: {
       description: "Construyendo soluciones de software robustas, seguras y escalables que impulsan la innovación empresarial y la excelencia digital.",

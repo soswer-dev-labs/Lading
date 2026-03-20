@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar';
 import Hero from '../../components/Hero';
 import Services from '../../components/Services';
+import Process from '../../components/Process';
 import CaseStudies from '../../components/CaseStudies';
 import CTA from '../../components/CTA';
 import Footer from '../../components/Footer';
@@ -16,8 +17,9 @@ const content = translations.es;
   <main>
     <Hero client:load content={content.hero} />
     <Services client:visible content={content.services} />
+    <Process client:visible content={content.process} />
     <CaseStudies client:visible content={content.caseStudies} lang="es" />
-    <CTA client:visible content={content.cta} />
+    <CTA client:visible content={content.cta} lang="es" />
   </main>
   <Footer client:visible content={content.footer} />
 </Layout>

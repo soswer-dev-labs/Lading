@@ -3,6 +3,9 @@ import { ChevronRight, Zap } from 'lucide-react';
 
 const Hero = ({ content }) => {
   const { badge, titlePrefix, titleHighlight, description, primaryCta, secondaryCta, stats } = content;
+  const lang = typeof window !== 'undefined' ? (window.location.pathname.startsWith('/es') ? 'es' : 'en') : 'en';
+  const contactHref = lang === 'es' ? '/es/contact' : '/contact';
+  const projectsHref = lang === 'es' ? '/es/projects' : '/projects';
 
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
@@ -30,7 +33,7 @@ const Hero = ({ content }) => {
           <span>{badge}</span>
         </div>
         
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 animate-fade-in-up delay-100">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 animate-fade-in-up delay-100 text-black dark:text-white transition-colors duration-300">
           {titlePrefix} <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon via-green-400 to-emerald-500 neon-glow">
             {titleHighlight}
@@ -42,11 +45,11 @@ const Hero = ({ content }) => {
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 animate-fade-in-up delay-300">
-          <a href="#services" className="px-8 py-3 bg-neon hover:bg-neon-hover text-black font-semibold rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg shadow-neon/20">
+          <a href={contactHref} className="px-8 py-3 bg-neon hover:bg-neon-hover text-black font-semibold rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg shadow-neon/20">
             {primaryCta}
             <ChevronRight className="w-4 h-4" />
           </a>
-          <a href="/contact" className="px-8 py-3 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white font-semibold rounded-lg backdrop-blur-sm transition-all duration-300">
+          <a href={projectsHref} className="px-8 py-3 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white font-semibold rounded-lg backdrop-blur-sm transition-all duration-300">
             {secondaryCta}
           </a>
         </div>
