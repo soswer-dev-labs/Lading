@@ -1,8 +1,23 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import keepDmDashboard from '../assets/img/keepdm/keepdm-dashboard_.webp';
+import mySpaceStorefront from '../assets/img/my_space/my-space-storefront.webp';
+import wLunaRegistro from '../assets/img/W-luna/w-luna-registro.webp';
+import facturacionWallpaper from '../assets/img/facturacion/facturacion-wallpaper.webp';
 
-const CaseStudies = ({ content }) => {
-  const { title, titleHighlight, description, viewCaseStudy, items } = content;
+const getAssetSrc = (asset) => (typeof asset === 'string' ? asset : asset?.src);
+
+const projectImages = {
+  keepdm: keepDmDashboard,
+  'my-space-online': mySpaceStorefront,
+  'w-luna': wLunaRegistro,
+  'electronic-billing-module': facturacionWallpaper,
+};
+
+const CaseStudies = ({ content, lang = 'en' }) => {
+  const { title, titleHighlight, description, viewCaseStudy, viewAllProjects, items } = content;
+  const projectsHref = lang === 'es' ? '/es/projects' : '/projects';
+  const projectBaseHref = lang === 'es' ? '/es/projects' : '/projects';
 
   return (
     <section id="portfolio" className="py-20 bg-white dark:bg-black relative transition-colors duration-300">
@@ -18,6 +33,11 @@ const CaseStudies = ({ content }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {items.map((project, index) => (
+            (() => {
+              const localImage = projectImages[project.slug];
+              const imageSrc = getAssetSrc(localImage) || project.image;
+
+              return (
             <div 
               key={index} 
               className="group rounded-2xl overflow-hidden bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:border-neon/50 transition-all duration-300 hover:shadow-xl dark:hover:shadow-none"
@@ -25,7 +45,7 @@ const CaseStudies = ({ content }) => {
               <div className="relative h-64 overflow-hidden">
                 <div className="absolute inset-0 bg-black/10 dark:bg-black/20 group-hover:bg-black/0 transition-colors z-10" />
                 <img 
-                  src={project.image} 
+                  src={imageSrc}
                   alt={project.title} 
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                 />
@@ -51,12 +71,27 @@ const CaseStudies = ({ content }) => {
                   ))}
                 </div>
                 
-                <div className="mt-6 pt-6 border-t border-gray-200 dark:border-white/10 flex items-center text-sm font-medium text-neon cursor-pointer hover:underline">
+                <a
+                  href={`${projectBaseHref}/${project.slug}`}
+                  className="mt-6 pt-6 border-t border-gray-200 dark:border-white/10 flex items-center text-sm font-medium text-neon hover:underline"
+                >
                   {viewCaseStudy}
-                </div>
+                </a>
               </div>
             </div>
+              );
+            })()
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <a
+            href={projectsHref}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-neon text-black font-semibold hover:bg-neon-hover transition-colors"
+          >
+            {viewAllProjects}
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
         </div>
       </div>
     </section>

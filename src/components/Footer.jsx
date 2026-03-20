@@ -12,7 +12,7 @@ const Footer = ({ content }) => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <img src="/logo.png" alt="SOSWER Logo" className="h-8 w-auto" />
+              <img src="/logo.webp" alt="SOSWER Logo" className="h-8 w-auto" />
               <span className="text-2xl font-semibold text-gray-900 dark:text-white">SOSWER</span>
             </div>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">

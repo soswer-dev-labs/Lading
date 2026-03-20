@@ -16,7 +16,7 @@ const Navbar = ({ content, lang = 'en' }) => {
     <nav className="fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-white/10 bg-white/50 dark:bg-black/50 backdrop-blur-md">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between px-6 py-4">
         <a href={lang === 'en' ? '/' : '/es'} className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="/logo.png" alt="SOSWER Logo" className="h-10 w-auto" />
+          <img src="/logo.webp" alt="SOSWER Logo" className="h-10 w-auto" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-black dark:text-white">SOSWER</span>
         </a>
         

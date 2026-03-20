@@ -8,8 +8,8 @@ const Hero = ({ content }) => {
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
       {/* Theme background textures with gradient overlay */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-        <img src="/dark_bg.jpg" alt="Dark background texture" className="hidden dark:block w-full h-full object-cover absolute inset-0" style={{zIndex:0}} />
-        <img src="/light_bg.jpg" alt="Light background texture" className="block dark:hidden w-full h-full object-cover absolute inset-0" style={{zIndex:0}} />
+        <img src="/dark_bg.webp" alt="Dark background texture" className="hidden dark:block w-full h-full object-cover absolute inset-0" style={{zIndex:0}} />
+        <img src="/light_bg.webp" alt="Light background texture" className="block dark:hidden w-full h-full object-cover absolute inset-0" style={{zIndex:0}} />
         {/* Single color gradient overlay */}
         <div className="absolute inset-0 w-full h-full pointer-events-none">
           <div className="block dark:hidden w-full h-full transition-all duration-700" style={{zIndex:1,

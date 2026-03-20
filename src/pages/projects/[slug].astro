@@ -1,0 +1,313 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import { translations } from '../../data/translations';
+
+type ProjectDetail = {
+  headline: string;
+  purpose: string;
+  overview: string;
+  impactTitle: string;
+  impact: string[];
+  aboutTitle?: string;
+  about?: string[];
+  galleryTitle?: string;
+};
+
+type AssetImage = {
+  src: string;
+};
+
+export function getStaticPaths() {
+  return translations.en.projectsPage.items.map((project) => ({
+    params: { slug: project.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const content = translations.en;
+const project = content.projectsPage.items.find((item) => item.slug === slug);
+const slugKey = slug as keyof typeof content.projectDetails;
+const details = content.projectDetails[slugKey] as ProjectDetail | undefined;
+
+if (!project || !details) {
+  throw new Error(`Project not found: ${slug}`);
+}
+
+const mySpaceImageModules = import.meta.glob('../../assets/img/my_space/*.{png,jpg,jpeg,webp,avif}', {
+  eager: true,
+  import: 'default',
+});
+
+const keepDmImageModules = import.meta.glob('../../assets/img/keepdm/*.{png,jpg,jpeg,webp,avif}', {
+  eager: true,
+  import: 'default',
+});
+
+const wLunaImageModules = import.meta.glob('../../assets/img/W-luna/*.{png,jpg,jpeg,webp,avif,svg}', {
+  eager: true,
+  import: 'default',
+});
+
+const facturacionImageModules = import.meta.glob('../../assets/img/facturacion/*.{png,jpg,jpeg,webp,avif,svg}', {
+  eager: true,
+  import: 'default',
+});
+
+const mySpaceImageOrder = [
+  'my-space-storefront.webp',
+  'my-space-logo_.webp',
+  'my-space-page_mockup.webp',
+  'my-space-services.webp',
+  'my-space-catalog-sections.webp',
+  'my-space-featured-products.webp',
+];
+
+const mySpaceCaptions: Record<string, string> = {
+  'my-space-storefront.webp': 'Storefront photo of the stationery business, showing the physical brand presence and service point.',
+  'my-space-logo_.webp': 'Logo concept: a warm mascot-style symbol that blends stationery identity with the neighborhood internet-cafe spirit, making the brand feel approachable and memorable from the first glance.',
+  'my-space-page_mockup.webp': 'Primary desktop mockup: the homepage hero was crafted to communicate trust, highlight top categories quickly, and guide visitors from discovery to purchase in just a few clicks.',
+  'my-space-services.webp': 'Service section highlighting print services, internet access, catalog orders, and calls.',
+  'my-space-catalog-sections.webp': 'Catalog sections for stationery, fashion catalog products, and home items.',
+  'my-space-featured-products.webp': 'Featured products module designed to boost product discovery and conversion.',
+};
+
+const mySpaceImages = Object.entries(mySpaceImageModules)
+  .map(([path, src]) => {
+    const image = src as string | AssetImage;
+    return {
+      path,
+      src: typeof image === 'string' ? image : image.src,
+    };
+  })
+  .sort((a, b) => {
+    const aIndex = mySpaceImageOrder.findIndex((name) => a.path.includes(name));
+    const bIndex = mySpaceImageOrder.findIndex((name) => b.path.includes(name));
+    const safeA = aIndex === -1 ? 999 : aIndex;
+    const safeB = bIndex === -1 ? 999 : bIndex;
+    return safeA - safeB;
+  });
+
+const isMySpace = slug === 'my-space-online';
+const isKeepDM = slug === 'keepdm';
+const isWLuna = slug === 'w-luna';
+const isElectronicBilling = slug === 'electronic-billing-module';
+
+const keepDmImages = Object.entries(keepDmImageModules).map(([path, src]) => {
+  const image = src as string | AssetImage;
+  return {
+    path,
+    src: typeof image === 'string' ? image : image.src,
+  };
+});
+
+const keepDmLogo = keepDmImages.find((img) => img.path.includes('keepdm-logo_'));
+const keepDmDashboard = keepDmImages.find((img) => img.path.includes('keepdm-dashboard_'));
+
+const wLunaImages = Object.entries(wLunaImageModules).map(([path, src]) => {
+  const image = src as string | AssetImage;
+  return {
+    path,
+    src: typeof image === 'string' ? image : image.src,
+  };
+});
+
+const wLunaLogo = wLunaImages.find((img) => img.path.includes('w-luna-logo'));
+const wLunaImageOrder = ['w-luna-factura.webp', 'w-luna-main.webp', 'w-luna-registro.webp'];
+const wLunaCaptions: Record<string, string> = {
+  'w-luna-factura.webp': 'Electronic invoice and printed ticket output generated directly from parking operations.',
+  'w-luna-main.webp': 'Main dashboard with vehicle flow, active occupancy, and operational indicators in real time.',
+  'w-luna-registro.webp': 'Vehicle entry registry screen with ticket preview and customer data capture workflow.',
+};
+
+const wLunaShowcaseImages = wLunaImages
+  .filter((img) => wLunaImageOrder.some((name) => img.path.includes(name)))
+  .sort((a, b) => {
+    const aIndex = wLunaImageOrder.findIndex((name) => a.path.includes(name));
+    const bIndex = wLunaImageOrder.findIndex((name) => b.path.includes(name));
+    return aIndex - bIndex;
+  });
+
+const facturacionImages = Object.entries(facturacionImageModules).map(([path, src]) => {
+  const image = src as string | AssetImage;
+  return {
+    path,
+    src: typeof image === 'string' ? image : image.src,
+  };
+});
+
+const alanubeLogo = facturacionImages.find((img) => img.path.includes('alanube-logo.svg'));
+---
+
+<Layout title={`${project.name} - ${content.meta.title}`}>
+  <Navbar client:load content={content.nav} lang="en" />
+
+  <main class="py-20 bg-white dark:bg-black transition-colors duration-300 min-h-screen">
+    <section class="container mx-auto px-6 max-w-5xl">
+      <a href="/projects" class="inline-flex items-center text-sm font-semibold text-neon hover:underline mb-8">
+        Back to all projects
+      </a>
+
+      {isKeepDM && keepDmLogo && (
+        <section class="mb-8 flex justify-center">
+          <img
+            src={keepDmLogo.src}
+            alt="KeepDM logo"
+            class="object-cover rounded-3xl"
+            style="width: 128px; height: 128px;"
+            loading="lazy"
+          />
+        </section>
+      )}
+
+      {isWLuna && wLunaLogo && (
+        <section class="mb-8 flex justify-center">
+          <img
+            src={wLunaLogo.src}
+            alt="W-luna logo"
+            class="h-auto"
+            style="width: 220px;"
+            loading="lazy"
+          />
+        </section>
+      )}
+
+      <header class="mb-10">
+        <h1 class="text-4xl md:text-5xl font-bold text-black dark:text-white mb-4">{project.name}</h1>
+        <p class="text-gray-700 dark:text-gray-300 text-lg mb-3">{details.headline}</p>
+        <p class="text-gray-600 dark:text-gray-400">{project.details}</p>
+      </header>
+
+      <section class="rounded-2xl p-8 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Purpose</h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">{details.purpose}</p>
+      </section>
+
+      <section class="rounded-2xl p-8 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Overview</h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">{details.overview}</p>
+      </section>
+
+      {isElectronicBilling && alanubeLogo && (
+        <section class="rounded-2xl p-8 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Strategic Ally</h2>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+            We developed the Electronic Billing Module together with our strategic ally, Alanube, combining domain expertise and technical execution for reliable DIAN integration.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8">
+            <img src="/logo.webp" alt="SOSWER logo" class="w-auto" style="height: 56px;" loading="lazy" />
+            <span class="text-2xl font-extrabold text-neon"> x </span>
+            <img src={alanubeLogo.src} alt="Alanube logo" class="w-auto" style="height: 56px;" loading="lazy" />
+          </div>
+        </section>
+      )}
+
+      {details.about && (
+        <section class="rounded-2xl p-8 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">{details.aboutTitle}</h2>
+          <div class="space-y-4">
+            {details.about.map((paragraph: string) => (
+              <p class="text-gray-700 dark:text-gray-300 leading-relaxed">{paragraph}</p>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {isMySpace && mySpaceImages.length > 0 && (
+        <section class="rounded-2xl p-8 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">{details.galleryTitle}</h2>
+          <div class="space-y-6">
+            {mySpaceImages.map((image, idx) => (
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-center">
+                {idx % 2 === 0 ? (
+                  <>
+                    <img
+                      src={image.src}
+                      alt={`My Space Online screenshot ${idx + 1}`}
+                      class="w-full h-56 sm:h-64 object-cover rounded-xl"
+                      loading="lazy"
+                    />
+                    <div class="rounded-xl p-4">
+                      <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                        {mySpaceImageOrder.find((name) => image.path.includes(name))
+                          ? mySpaceCaptions[mySpaceImageOrder.find((name) => image.path.includes(name))!]
+                          : `My Space Online visual showcase ${idx + 1}.`}
+                      </p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div class="rounded-xl p-4 md:order-1 order-2">
+                      <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                        {mySpaceImageOrder.find((name) => image.path.includes(name))
+                          ? mySpaceCaptions[mySpaceImageOrder.find((name) => image.path.includes(name))!]
+                          : `My Space Online visual showcase ${idx + 1}.`}
+                      </p>
+                    </div>
+                    <img
+                      src={image.src}
+                      alt={`My Space Online screenshot ${idx + 1}`}
+                      class="w-full h-56 sm:h-64 object-cover rounded-xl md:order-2 order-1"
+                      loading="lazy"
+                    />
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {isWLuna && wLunaShowcaseImages.length > 0 && (
+        <section class="rounded-2xl p-8 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 mb-8">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">W-luna Screens</h2>
+          <div class="space-y-6">
+            {wLunaShowcaseImages.map((image, idx) => (
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-center">
+                <img
+                  src={image.src}
+                  alt={`W-luna screen ${idx + 1}`}
+                  class="w-full h-64 sm:h-72 object-cover rounded-xl"
+                  loading="lazy"
+                />
+                <div class="rounded-xl p-4">
+                  <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                    {wLunaImageOrder.find((name) => image.path.includes(name))
+                      ? wLunaCaptions[wLunaImageOrder.find((name) => image.path.includes(name))!]
+                      : `W-luna visual ${idx + 1}.`}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section class="rounded-2xl p-8 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">{details.impactTitle}</h2>
+        <ul class="space-y-3">
+          {details.impact.map((point: string) => (
+            <li class="text-gray-700 dark:text-gray-300 flex items-start gap-3">
+              <span class="text-neon mt-1">•</span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {isKeepDM && keepDmDashboard && (
+        <section class="mt-8">
+          <img
+            src={keepDmDashboard.src}
+            alt="KeepDM dashboard"
+            class="w-full h-auto rounded-2xl"
+            loading="lazy"
+          />
+        </section>
+      )}
+    </section>
+  </main>
+
+  <Footer client:visible content={content.footer} />
+</Layout>

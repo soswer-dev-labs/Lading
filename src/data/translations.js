@@ -71,32 +71,127 @@ export const translations = {
       titleHighlight: "Studies",
       description: "Real-world success stories showcasing our expertise in delivering transformative software solutions.",
       viewCaseStudy: "View Case Study",
+      viewAllProjects: "View All Projects",
       items: [
         {
-          title: 'FinTech Payment Platform',
-          description: 'Built a secure, scalable payment processing platform handling $50M+ in monthly transactions.',
-          tags: ['React', 'Node.js', 'PostgreSQL', 'AWS', 'Stripe'],
+          slug: 'keepdm',
+          title: 'KeepDM',
+          description: 'A dashboard creator tool to manage your own insights.',
+          tags: ['React', 'TypeScript', 'Vite', 'FastAPI', 'MongoDB'],
           image: 'https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         },
         {
-          title: 'Healthcare SaaS Solution',
-          description: 'Developed a HIPAA-compliant telemedicine platform connecting 10,000+ patients with healthcare providers.',
-          tags: ['React Native', 'Python', 'MongoDB', 'WebRTC'],
+          slug: 'my-space-online',
+          title: 'My Space Online',
+          description: 'An e-commerce platform built for a stationery business.',
+          tags: ['WordPress', 'Elementor', 'E-commerce'],
           image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         },
         {
-          title: 'E-Commerce Analytics Dashboard',
-          description: 'Created a real-time analytics platform providing actionable insights for enterprise retailers.',
-          tags: ['Vue.js', 'GraphQL', 'D3.js', 'GCP', 'BigQuery'],
+          slug: 'w-luna',
+          title: 'W-luna',
+          description: 'A parking management system with shift changes, vehicle check-in and check-out, ticket printing, and e-bill generation.',
+          tags: ['React', 'TypeScript', 'Vite', 'Django', 'PostgreSQL'],
           image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         },
         {
-          title: 'Supply Chain Management System',
-          description: 'Engineered an end-to-end supply chain solution optimizing logistics for global operations.',
-          tags: ['Angular', 'Java', 'Redis', 'Docker', 'Kubernetes'],
+          slug: 'electronic-billing-module',
+          title: 'Electronic Billing Module',
+          description: 'An electronic invoicing module that enables invoice generation for any registered business, with direct DIAN integration.',
+          tags: ['Python', 'Electronic Invoicing', 'DIAN Integration'],
           image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         },
       ]
+    },
+    projectsPage: {
+      title: "All",
+      titleHighlight: "Projects",
+      subtitle: "Explore the full list of solutions we have delivered across products, e-commerce, operations, and compliance.",
+      viewProject: "Read Project Story",
+      backToHome: "Back to Home",
+      items: [
+        {
+          slug: "keepdm",
+          name: "KeepDM",
+          summary: "A dashboard creator tool to manage your own insights.",
+          details: "Built with React, TypeScript, Vite, FastAPI, and MongoDB.",
+          stack: ["React", "TypeScript", "Vite", "FastAPI", "MongoDB"]
+        },
+        {
+          slug: "my-space-online",
+          name: "My Space Online",
+          summary: "An e-commerce platform built for a stationery business.",
+          details: "Built in WordPress with Elementor.",
+          stack: ["WordPress", "Elementor", "E-commerce"]
+        },
+        {
+          slug: "w-luna",
+          name: "W-luna",
+          summary: "A parking management system with shift changes, vehicle check-in and check-out, ticket printing, and e-bill generation.",
+          details: "Built with React, TypeScript, Vite, Django, and PostgreSQL.",
+          stack: ["React", "TypeScript", "Vite", "Django", "PostgreSQL"]
+        },
+        {
+          slug: "electronic-billing-module",
+          name: "Electronic Billing Module",
+          summary: "An electronic invoicing module that enables invoice generation for any registered business with direct DIAN integration.",
+          details: "Built in Python.",
+          stack: ["Python", "Electronic Invoicing", "DIAN Integration"]
+        }
+      ]
+    },
+    projectDetails: {
+      keepdm: {
+        headline: "Dashboard Intelligence for Better Decisions",
+        purpose: "KeepDM was created to help teams centralize metrics and quickly build personalized dashboards for operations, sales, and growth tracking.",
+        overview: "The platform combines a flexible dashboard builder with a modern, responsive interface that lets users design, share, and monitor KPIs without heavy technical setup.",
+        impactTitle: "Business Impact",
+        impact: [
+          "Faster reporting cycles with reusable dashboard templates.",
+          "Better alignment across teams with one source of truth for performance data.",
+          "Higher adoption of analytics by non-technical users."
+        ]
+      },
+      'my-space-online': {
+        headline: "Digital Commerce for a Stationery Store",
+        purpose: "My Space Online was built to transform a physical stationery store into an accessible online business where customers can browse products, request catalog items, and purchase from anywhere.",
+        overview: "The e-commerce experience was designed in WordPress + Elementor with a clear catalog structure for stationery, home products, and beauty brands. It prioritizes quick product discovery, trust, and simple checkout paths for repeat purchases.",
+        aboutTitle: "About My Space Online",
+        about: [
+          "The purpose of this project was to open a new digital sales channel for a local stationery store and reduce dependency on in-person traffic.",
+          "The website introduced product catalog pages, highlighted collections, and better promotional visibility, making it easier for customers to discover and buy available inventory.",
+          "After launch, the store achieved double-digit growth in monthly online sales and improved customer reach beyond the immediate neighborhood."
+        ],
+        impactTitle: "Sales and Growth Highlights",
+        impact: [
+          "Increase in monthly sales through online catalog conversion.",
+          "More recurring customers from digital channels.",
+          "Expanded market reach for stationery and complementary products."
+        ],
+        galleryTitle: "Project Gallery"
+      },
+      'w-luna': {
+        headline: "Parking Operations with Full Control",
+        purpose: "W-luna helps parking operators manage daily activity from vehicle entry to checkout with strong operational traceability.",
+        overview: "The system includes shift changes, vehicle check-in/check-out, ticket printing, and e-bill generation in a workflow optimized for speed at points of service.",
+        impactTitle: "Operational Impact",
+        impact: [
+          "Reduced manual errors in vehicle records and shift settlements.",
+          "Faster throughput at entry and exit points.",
+          "Better accountability through digital billing records."
+        ]
+      },
+      'electronic-billing-module': {
+        headline: "Electronic Invoicing with DIAN Connectivity",
+        purpose: "This module enables any registered business to generate compliant electronic invoices with direct integration to DIAN.",
+        overview: "Built in Python, it standardizes invoice generation, validation, and submission flows so organizations can automate fiscal processes and reduce compliance risk.",
+        impactTitle: "Compliance Impact",
+        impact: [
+          "Streamlined invoicing operations with fewer manual steps.",
+          "Improved regulatory compliance through direct DIAN integration.",
+          "Scalable architecture for multi-business onboarding."
+        ]
+      }
     },
     cta: {
       badge: "Let's Build Something Amazing",
@@ -233,32 +328,127 @@ export const translations = {
       titleHighlight: "Estudio",
       description: "Historias de éxito del mundo real que muestran nuestra experiencia en la entrega de soluciones de software transformadoras.",
       viewCaseStudy: "Ver Caso de Estudio",
+      viewAllProjects: "Ver Todos los Proyectos",
       items: [
         {
-          title: 'Plataforma de Pagos FinTech',
-          description: 'Construcción de una plataforma de procesamiento de pagos segura y escalable que maneja más de $50M en transacciones mensuales.',
-          tags: ['React', 'Node.js', 'PostgreSQL', 'AWS', 'Stripe'],
+          slug: 'keepdm',
+          title: 'KeepDM',
+          description: 'Herramienta creadora de dashboards para gestionar tus propios insights.',
+          tags: ['React', 'TypeScript', 'Vite', 'FastAPI', 'MongoDB'],
           image: 'https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         },
         {
-          title: 'Solución SaaS de Salud',
-          description: 'Desarrollo de una plataforma de telemedicina compatible con HIPAA que conecta a más de 10,000 pacientes con proveedores de atención médica.',
-          tags: ['React Native', 'Python', 'MongoDB', 'WebRTC'],
+          slug: 'my-space-online',
+          title: 'My Space Online',
+          description: 'Un e-commerce creado para una papeleria.',
+          tags: ['WordPress', 'Elementor', 'E-commerce'],
           image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         },
         {
-          title: 'Panel de Análisis de E-Commerce',
-          description: 'Creación de una plataforma de análisis en tiempo real que proporciona información procesable para minoristas empresariales.',
-          tags: ['Vue.js', 'GraphQL', 'D3.js', 'GCP', 'BigQuery'],
+          slug: 'w-luna',
+          title: 'W-luna',
+          description: 'Sistema de gestion de parqueadero con cambios de turno, ingreso y salida de vehiculos, impresion de tickets y generacion de factura electronica.',
+          tags: ['React', 'TypeScript', 'Vite', 'Django', 'PostgreSQL'],
           image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         },
         {
-          title: 'Sistema de Gestión de Cadena de Suministro',
-          description: 'Ingeniería de una solución de cadena de suministro de extremo a extremo que optimiza la logística para operaciones globales.',
-          tags: ['Angular', 'Java', 'Redis', 'Docker', 'Kubernetes'],
+          slug: 'electronic-billing-module',
+          title: 'Modulo de Facturacion Electronica',
+          description: 'Modulo de facturacion electronica que permite generar facturas para cualquier comercio registrado, con conexion directa a la DIAN.',
+          tags: ['Python', 'Facturacion Electronica', 'Integracion DIAN'],
           image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         },
       ]
+    },
+    projectsPage: {
+      title: "Todos los",
+      titleHighlight: "Proyectos",
+      subtitle: "Explora la lista completa de soluciones que hemos entregado en productos, e-commerce, operaciones y cumplimiento.",
+      viewProject: "Ver Historia del Proyecto",
+      backToHome: "Volver al Inicio",
+      items: [
+        {
+          slug: "keepdm",
+          name: "KeepDM",
+          summary: "Una herramienta creadora de dashboards para gestionar tus propios insights.",
+          details: "Construido con React, TypeScript, Vite, FastAPI y MongoDB.",
+          stack: ["React", "TypeScript", "Vite", "FastAPI", "MongoDB"]
+        },
+        {
+          slug: "my-space-online",
+          name: "My Space Online",
+          summary: "Un e-commerce creado para una papeleria.",
+          details: "Construido en WordPress con Elementor.",
+          stack: ["WordPress", "Elementor", "E-commerce"]
+        },
+        {
+          slug: "w-luna",
+          name: "W-luna",
+          summary: "Un sistema de gestion de parqueadero con cambios de turno, ingreso y salida de vehiculos, impresion de tickets y generacion de factura electronica.",
+          details: "Construido con React, TypeScript, Vite, Django y PostgreSQL.",
+          stack: ["React", "TypeScript", "Vite", "Django", "PostgreSQL"]
+        },
+        {
+          slug: "electronic-billing-module",
+          name: "Modulo de Facturacion Electronica",
+          summary: "Un modulo de facturacion electronica que permite la generacion de facturas para cualquier comercio registrado, con conexion directa a la DIAN.",
+          details: "Construido en Python.",
+          stack: ["Python", "Facturacion Electronica", "Integracion DIAN"]
+        }
+      ]
+    },
+    projectDetails: {
+      keepdm: {
+        headline: "Inteligencia de Dashboards para Mejores Decisiones",
+        purpose: "KeepDM se creo para que los equipos centralicen metricas y construyan dashboards personalizados para operaciones, ventas y crecimiento.",
+        overview: "La plataforma combina un creador flexible de tableros con una interfaz moderna y responsive para disenar, compartir y monitorear KPIs sin una configuracion tecnica compleja.",
+        impactTitle: "Impacto de Negocio",
+        impact: [
+          "Ciclos de reporte mas rapidos con plantillas reutilizables.",
+          "Mayor alineacion entre equipos con una fuente unica de datos.",
+          "Mayor adopcion del analisis por usuarios no tecnicos."
+        ]
+      },
+      'my-space-online': {
+        headline: "Comercio Digital para una Papeleria",
+        purpose: "My Space Online se construyo para transformar una papeleria fisica en un negocio digital accesible, donde los clientes pueden explorar productos, pedir por catalogo y comprar desde cualquier lugar.",
+        overview: "La experiencia e-commerce se diseno en WordPress + Elementor con una estructura clara de catalogo para papeleria, hogar y marcas de belleza. Se priorizo el descubrimiento rapido de productos, la confianza y un camino simple de compra.",
+        aboutTitle: "Sobre My Space Online",
+        about: [
+          "El objetivo del proyecto fue abrir un nuevo canal de ventas digital para la papeleria y reducir la dependencia de las ventas presenciales.",
+          "El sitio incorporo catalogos por categoria, colecciones destacadas y mejor visibilidad de promociones para facilitar la compra.",
+          "Tras el lanzamiento, el negocio logro crecimiento de doble digito en ventas mensuales online y mayor alcance de clientes fuera de la zona inmediata."
+        ],
+        impactTitle: "Resultados en Ventas y Crecimiento",
+        impact: [
+          "Incremento de ventas mensuales por conversion del catalogo online.",
+          "Mas clientes recurrentes desde canales digitales.",
+          "Mayor alcance para productos de papeleria y categorias complementarias."
+        ],
+        galleryTitle: "Galeria del Proyecto"
+      },
+      'w-luna': {
+        headline: "Operacion de Parqueadero con Control Total",
+        purpose: "W-luna ayuda a operadores de parqueadero a gestionar la operacion diaria desde el ingreso del vehiculo hasta el checkout con trazabilidad completa.",
+        overview: "El sistema incluye cambios de turno, check-in/check-out de vehiculos, impresion de tickets y generacion de factura electronica en un flujo optimizado para rapidez en punto de atencion.",
+        impactTitle: "Impacto Operativo",
+        impact: [
+          "Reduccion de errores manuales en registros y cierres de turno.",
+          "Mayor velocidad en puntos de entrada y salida.",
+          "Mejor control con trazabilidad digital de facturacion."
+        ]
+      },
+      'electronic-billing-module': {
+        headline: "Facturacion Electronica con Conexion DIAN",
+        purpose: "Este modulo permite a cualquier comercio registrado generar facturas electronicas con integracion directa a la DIAN.",
+        overview: "Construido en Python, estandariza los flujos de generacion, validacion y envio para automatizar procesos fiscales y disminuir riesgo de incumplimiento.",
+        impactTitle: "Impacto en Cumplimiento",
+        impact: [
+          "Operacion de facturacion mas eficiente y con menos pasos manuales.",
+          "Mayor cumplimiento normativo con envio directo a la DIAN.",
+          "Arquitectura escalable para onboarding de multiples comercios."
+        ]
+      }
     },
     cta: {
       badge: "Construyamos Algo Increíble",
