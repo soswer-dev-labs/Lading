@@ -48,10 +48,10 @@ const Navbar = ({ content, lang = 'en' }) => {
         </div>
         
         <div className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${isOpen ? 'block' : 'hidden'}`} id="navbar-sticky">
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50/50 dark:bg-gray-900/50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
+          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-200 dark:border-gray-700 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
             {links.map((link) => (
               <li key={link.name}>
-                <a href={link.href} className="block py-2 px-3 text-black dark:text-white rounded hover:bg-gray-200 dark:hover:bg-gray-700 md:hover:bg-transparent md:hover:text-neon md:p-0 transition-colors duration-300">
+                <a href={link.href} className="block py-2 px-3 text-black dark:text-white rounded md:hover:bg-transparent md:hover:text-neon md:p-0 transition-colors duration-300">
                   {link.name}
                 </a>
               </li>

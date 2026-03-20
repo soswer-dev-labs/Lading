@@ -313,9 +313,35 @@ const alanubeLogo = facturacionImages.find((img) => img.path.includes('alanube-l
         </section>
       )}
 
-      <div id="project-image-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4">
-        <button id="project-image-modal-close" type="button" class="absolute top-4 right-4 text-white text-sm px-3 py-1 rounded border border-white/30 hover:bg-white/10">Cerrar</button>
-        <img id="project-image-modal-img" src="" alt="Imagen ampliada del proyecto" class="max-w-[95vw] max-h-[90vh] w-auto h-auto rounded-xl" />
+      <div id="project-image-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 dark:bg-black/90 p-4 backdrop-blur-sm">
+        <div class="bg-gray-100 dark:bg-black border-2 border-gray-400 dark:border-neon/50 shadow-xl dark:shadow-[0_0_20px_rgba(57,255,20,0.2)] max-w-[95vw] max-h-[90vh] flex flex-col overflow-hidden rounded-xl transition-colors duration-300">
+          <div class="bg-gray-200 dark:bg-gray-900 border-b border-gray-400 dark:border-neon/30 text-gray-700 dark:text-neon px-3 py-1.5 flex items-center justify-between select-none transition-colors duration-300">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-neon rounded-full animate-pulse"></div>
+              <span class="text-[10px] font-pixel tracking-wider uppercase">Visor_de_Imágenes.exe</span>
+            </div>
+            <div class="flex gap-2">
+              <button id="project-image-modal-min" type="button" class="group w-5 h-5 border border-gray-400 dark:border-neon/30 flex items-center justify-center hover:bg-neon/10 hover:border-neon transition-colors cursor-pointer" title="Minimizar">
+                <svg width="8" height="2" viewBox="0 0 8 2" fill="none" xmlns="http://www.w3.org/2000/svg" style="shape-rendering: crispEdges;">
+                  <rect width="8" height="2" class="fill-gray-700/70 dark:fill-neon/70 group-hover:fill-neon"/>
+                </svg>
+              </button>
+              <button id="project-image-modal-close" type="button" class="group w-5 h-5 border border-gray-400 dark:border-neon/30 flex items-center justify-center hover:bg-red-500/20 hover:border-red-500 transition-colors cursor-pointer" title="Cerrar">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg" style="shape-rendering: crispEdges;">
+                  <path d="M1 1H2V2H3V3H5V2H6V1H7V2H6V3H5V5H6V6H7V7H6V6H5V5H3V6H2V7H1V6H2V5H3V3H2V2H1V1Z" class="fill-gray-700/70 dark:fill-neon/70 group-hover:fill-red-500"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="p-2 bg-gray-100 dark:bg-black flex items-center justify-center overflow-hidden transition-colors duration-300">
+            <div class="border border-gray-300 dark:border-neon/10 p-1 bg-gray-200 dark:bg-gray-900/50">
+              <img id="project-image-modal-img" src="" alt="Imagen ampliada del proyecto" class="max-w-full max-h-[75vh] object-contain" />
+            </div>
+          </div>
+          <div class="bg-gray-200 dark:bg-gray-900 border-t border-gray-400 dark:border-neon/20 px-3 py-1.5 flex items-center transition-colors duration-300">
+            <div class="text-[8px] font-pixel text-gray-700/50 dark:text-neon/50 uppercase tracking-tighter">Estado: En línea // Renderizado_Completo</div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -325,7 +351,8 @@ const alanubeLogo = facturacionImages.find((img) => img.path.includes('alanube-l
       const modal = document.getElementById('project-image-modal');
       const modalImg = document.getElementById('project-image-modal-img');
       const closeBtn = document.getElementById('project-image-modal-close');
-      if (!modal || !modalImg || !closeBtn) return;
+      const minBtn = document.getElementById('project-image-modal-min');
+      if (!modal || !modalImg || !closeBtn || !minBtn) return;
 
       const openModal = (src, alt) => {
         modalImg.src = src;
@@ -344,7 +371,7 @@ const alanubeLogo = facturacionImages.find((img) => img.path.includes('alanube-l
 
       document.addEventListener('click', (event) => {
         const target = event.target;
-        if (!(target instanceof HTMLElement)) return;
+        if (!(target instanceof Element)) return;
 
         const image = target.closest('img[data-modal-image]');
         if (image) {
@@ -352,7 +379,7 @@ const alanubeLogo = facturacionImages.find((img) => img.path.includes('alanube-l
           return;
         }
 
-        if (target === modal || target === closeBtn) {
+        if (target === modal || target.closest('#project-image-modal-close') || target.closest('#project-image-modal-min')) {
           closeModal();
         }
       });
