@@ -25,7 +25,7 @@ const content = translations.es;
 
       <div class="space-y-24">
         <About client:visible content={content.about} />
-        <Process client:visible content={content.process} />
+        <Process client:visible content={content.process} hideViewButton={true} />
       </div>
 
       <div class="mt-20 flex flex-col sm:flex-row items-center justify-center gap-6 text-center">

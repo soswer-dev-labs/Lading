@@ -16,9 +16,9 @@ const Hero = ({ content }) => {
         {/* Single color gradient overlay */}
         <div className="absolute inset-0 w-full h-full pointer-events-none">
           <div className="block dark:hidden w-full h-full transition-all duration-700" style={{zIndex:1,
-            background: 'linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,1) 100%)'}} />
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,1) 100%)'}} />
           <div className="hidden dark:block w-full h-full transition-all duration-700" style={{zIndex:1,
-            background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%,  rgba(0,0,0,1) 100%)'}} />
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,  rgba(0,0,0,1) 100%)'}} />
         </div>
       </div>
       {/* Background Elements */}

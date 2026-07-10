@@ -18,9 +18,11 @@ const icons = {
   Rocket,
   LifeBuoy
 };
+import { ArrowUpRight } from 'lucide-react';
 
-const Process = ({ content }) => {
-  const { title, titleHighlight, subtitle, steps } = content;
+const Process = ({ content, hideViewButton = false, lang="en" }) => {
+  const { title, titleHighlight, subtitle, steps, viewProcess } = content;
+  const processHref = lang === 'es' ? '/es/process' : '/process';
 
   return (
     <section id="process" className="py-24 bg-gray-50 dark:bg-[#050505] relative overflow-hidden transition-colors duration-300">
@@ -49,13 +51,13 @@ const Process = ({ content }) => {
               return (
                 <div key={step.id} className={`relative flex flex-col lg:flex-row items-center ${isEven ? 'lg:flex-row-reverse' : ''}`}>
                   {/* Step Number Dot */}
-                  <div className="absolute left-1/2 -translate-x-1/2 hidden lg:flex items-center justify-center w-10 h-10 rounded-full bg-white dark:bg-black border-2 border-gray-400 dark:border-neon z-20 shadow-[0_0_10px_rgba(0,0,0,0.1)] dark:shadow-[0_0_15px_rgba(57,255,20,0.4)] transition-colors duration-300">
+                  <div className="absolute left-1/2 -translate-x-1/2 hidden lg:flex items-center justify-center w-10 h-10 rounded-full bg-white dark:bg-black border-2 border-gray-400 dark:border-neon z-20 shadow-[0_0_.625rem_rgba(0,0,0,0.1)] dark:shadow-[0_0_.9375rem_rgba(57,255,20,0.4)] transition-colors duration-300">
                     <span className="text-gray-900 dark:text-neon font-bold text-sm">{index + 1}</span>
                   </div>
 
                   {/* Content Card */}
                   <div className={`w-full lg:w-1/2 ${isEven ? 'lg:pl-16' : 'lg:pr-16'}`}>
-                    <div className="group p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 hover:border-neon/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(57,255,20,0.1)] relative overflow-hidden">
+                    <div className="group p-8 rounded-2xl bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 hover:border-neon/50 transition-all duration-500 hover:shadow-[0_0_1.875rem_rgba(57,255,20,0.1)] relative overflow-hidden">
                       {/* Hover Gradient */}
                       <div className="absolute inset-0 bg-gradient-to-br from-neon/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       
@@ -84,10 +86,21 @@ const Process = ({ content }) => {
               );
             })}
           </div>
+          {!hideViewButton && (
+            <div className="mt-12 text-center">
+              <a href={processHref} 
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-neon text-black font-semibold hover:bg-neon-hover transition-colors">
+                {content.viewProcess}
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
+          )}
+          
         </div>
       </div>
     </section>
   );
 };
+
 
 export default Process;

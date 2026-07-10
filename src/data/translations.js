@@ -210,6 +210,7 @@ export const translations = {
     process: {
       title: "Our Development",
       titleHighlight: "Journey",
+      viewProcess: "View Our Process",
       subtitle: "We follow a rigorous Software Development Life Cycle (SDLC) to ensure excellence in every line of code.",
       steps: [
         {
@@ -539,6 +540,7 @@ export const translations = {
     process: {
       title: "Nuestro Proceso de",
       titleHighlight: "Desarrollo",
+      viewProcess: "Ver Nuestro Proceso",
       subtitle: "Seguimos un ciclo de vida de desarrollo de software (SDLC) riguroso para garantizar la excelencia en cada línea de código.",
       steps: [
         {
