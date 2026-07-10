@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 const CTA = ({ content, lang = 'en' }) => {
   const { badge, title, titleHighlight, description, primaryCta, secondaryCta, stats } = content;
   const processHref = lang === 'es' ? '/es/process' : '/process';
+  const contactHref = lang === 'es' ? '/es/contact' : '/contact';
 
   return (
     <section className="py-20 relative overflow-hidden bg-white dark:bg-black transition-colors duration-300">
@@ -24,7 +25,7 @@ const CTA = ({ content, lang = 'en' }) => {
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <a href="/contact" className="px-8 py-4 bg-neon hover:bg-neon-hover text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(57,255,20,0.4)]">
+          <a href={contactHref} className="px-8 py-4 bg-neon hover:bg-neon-hover text-black font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(57,255,20,0.4)]">
             {primaryCta}
           </a>
           <a href={processHref} className="px-8 py-4 bg-gray-100 dark:bg-transparent border border-gray-200 dark:border-white/20 hover:bg-gray-200 dark:hover:bg-white/5 text-gray-900 dark:text-white font-semibold rounded-lg transition-all duration-300 flex items-center gap-2">
